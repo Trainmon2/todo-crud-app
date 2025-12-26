@@ -1,0 +1,260 @@
+/* === GLOBAL LAYOUT === */
+body {
+  background-color: #f9f6e8;
+  font-family: "Poppins", sans-serif;
+  color: #2f3640;
+  margin: 0;
+  padding: 0;
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #2d3436;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  box-shadow: none;
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+.navbar.glow {
+  box-shadow: 0 0 20px rgba(9, 132, 227, 0.45);
+  background-color: #1e272e;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #00ffff;
+}
+
+.navbar a.active {
+  background-color: #74b9ff;
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+/* === CONTAINER & CARD === */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin-top: 90px; /* Prevent overlap with navbar */
+}
+
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: fadeUp 0.8s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === INPUTS === */
+input[type="text"] {
+  width: 85%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* === BUTTONS === */
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[name="add"] {
+  background-color: #0984e3;
+}
+button[name="add"]:hover {
+  background-color: #74b9ff;
+}
+
+button[name="done"] {
+  background-color: #00b894;
+}
+button[name="done"]:hover {
+  background-color: #55efc4;
+}
+
+button[name="clear"] {
+  background-color: #d63031;
+}
+button[name="clear"]:hover {
+  background-color: #ff7675;
+}
+
+/* === FEEDBACK MESSAGE === */
+.feedback {
+  margin-top: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feedback p {
+  margin: 10px 0;
+}
+
+.feedback p[style*="green"] {
+  color: #00b894 !important;
+}
+
+.feedback p[style*="red"] {
+  color: #d63031 !important;
+}
+
+/* === TASK LIST === */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+}
+
+li {
+  background: #f1f2f6;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+li.completed {
+  color: #2ecc71;
+  text-decoration: line-through;
+  box-shadow: 0 0 10px rgba(39, 174, 96, 0.3);
+  transition: all 0.7s ease;
+  animation: softGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes softGlow {
+  0% { text-shadow: 0 0 4px #27ae60, 0 0 8px #2ecc71; }
+  100% { text-shadow: 0 0 10px #27ae60, 0 0 18px #2ecc71; }
+}
+
+/* === FADEOUT EFFECT === */
+li.fadeout {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* === CHECKMARK FLASH === */
+.flash-check {
+  animation: flashIn 0.6s ease-in-out;
+  margin-left: 5px;
+  color: #00b894;
+  font-weight: bold;
+}
+
+@keyframes flashIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  body {
+    background-color: #fafafa;
+    padding: 0;
+  }
+
+  .navbar {
+    font-size: 0.9rem;
+    padding: 10px 0;
+  }
+
+  .navbar a {
+    display: inline-block;
+    margin: 5px 8px;
+  }
+
+  .container {
+    margin-top: 80px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  input[type="text"] {
+    width: 95%;
+    font-size: 0.95rem;
+  }
+
+  button {
+    width: 100%;
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+
+  ul {
+    font-size: 0.95rem;
+  }
+}
+
+/* For smaller phones */
+@media (max-width: 480px) {
+  .navbar {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  input[type="text"], button {
+    font-size: 0.9rem;
+  }
+
+  ul li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  button[name="done"] {
+    align-self: flex-end;
+  }
+}
